@@ -46,6 +46,6 @@ export const login = async (prevState, formData) => {
 };
 
 export const logout = async () => {
-  deleteSession();
+  await deleteSession();
   revalidatePath("/");
 };

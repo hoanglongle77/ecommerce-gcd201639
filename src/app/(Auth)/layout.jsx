@@ -4,4 +4,4 @@ const AuthLayout = ({ children }) => {
   return <main>{children}</main>;
 };
 
-export default layout;
+export default AuthLayout;

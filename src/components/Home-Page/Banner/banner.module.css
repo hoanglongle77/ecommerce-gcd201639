@@ -1,0 +1,15 @@
+.bannerLeft,
+.bannerRight {
+    background-color: var(--color-primary);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--color-highlight);
+}
+
+.bannerLeft {
+    border-right: 5px dotted white;
+}
+
+.bannerRight p {
+    color: white;
+}

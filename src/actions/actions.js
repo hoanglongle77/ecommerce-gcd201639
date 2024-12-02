@@ -13,6 +13,7 @@ export const updateProfile = async (formData) => {
       firstName: firstName,
       lastName: lastName,
     });
+    revalidatePath("/user");
     return { success: true, message: "Profile updated successfully" };
   } catch (error) {
     return {

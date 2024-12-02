@@ -27,7 +27,7 @@ const ProductCard = ({ data }) => {
         width="200"
         height="200"
       />
-      <div className={`card-body w-100 min-w-0 px-1 pb-2 px-sm-3 pb-sm-3`}>
+      <div className={`card-body w-100 min-w-0 px-0`}>
         <p className={`card-text text-muted mb-2`}>{brand}</p>
         <h3 className={`card-title pb-1 mb-2 fs-5`}>
           <span>{name}</span>
@@ -47,6 +47,7 @@ const ProductCard = ({ data }) => {
               >
                 <AddShoppingCartRounded />
               </button>
+
               <WishButton product={data} />
             </div>
           }

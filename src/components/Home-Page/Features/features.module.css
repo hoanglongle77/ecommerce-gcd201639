@@ -1,0 +1,32 @@
+/* CSS for FeatureCard */
+.featureCard {
+    background-color: var(--color-primary);
+    /* Dark background */
+    color: var(--color-text-light);
+    /* Light text for readability */
+    border-radius: 10px;
+    width: 100%;
+    min-height: 250px;
+    margin-bottom: 20px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.featureCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--color-primary);
+    /* Neon yellow shadow */
+}
+
+.content h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-highlight);
+    /* Bright accent for headings */
+}
+
+.content p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-light);
+    /* Light text for description */
+}

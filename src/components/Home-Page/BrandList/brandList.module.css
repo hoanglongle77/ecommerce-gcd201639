@@ -1,0 +1,10 @@
+.brandList {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.brandItem {
+    padding: 30px;
+    border: 1px solid silver;
+    border-radius: 10px;
+}

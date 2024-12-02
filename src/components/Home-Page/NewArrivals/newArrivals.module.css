@@ -1,0 +1,60 @@
+.banner {
+    background: #1d2c41 url("/public/images/background.jpg")
+}
+
+
+.inside {
+    max-width: 320px;
+    margin-bottom: -19%;
+    --cz-aspect-ratio: calc(690 / 640 * 100%)
+}
+
+.productTag {
+    border: 1px solid silver;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.productTag:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--color-primary);
+}
+
+.productTag img {
+    border: 1px solid var(--color-highlight);
+    border-radius: 10px;
+}
+
+.productNameLink {
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.star {
+    font-size: 18px;
+}
+
+.starFull {
+    color: #FFD700;
+    /* Gold color for full stars */
+}
+
+.starEmpty {
+    color: #e0e0e0;
+    /* Light gray color for empty stars */
+}
+
+.starHalf {
+    background: linear-gradient(to right, #FFD700 50%, #e0e0e0 50%);
+    /* Gold for half and gray for empty */
+    -webkit-background-clip: text;
+    color: transparent;
+    /* Hide text color, show the gradient as the text */
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
