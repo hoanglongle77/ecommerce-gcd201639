@@ -1,0 +1,19 @@
+.linksContainer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--navbar-background);
+    padding: 15px 0 15px 0;
+}
+
+.link {
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--navbar-link-color);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.link:hover {
+    color: var(--navbar-link-hover-color);
+}
