@@ -9,10 +9,11 @@ import {
 import styles from "./productCard.module.css";
 import WishButton from "../../WishButton/WishButton";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const ProductCard = ({ data }) => {
   const { addToCart } = useShoppingCart();
-  const { name, brand, price, images } = data;
+  const { name, brand, price, images, slug } = data;
 
   const handleAddToCart = () => {
     addToCart(data);
@@ -20,13 +21,19 @@ const ProductCard = ({ data }) => {
 
   return (
     <div className={`card ${styles.productCard}`}>
-      <Image
-        src={images?.[0]?.data}
-        className={`card-img-top`}
-        alt={name}
-        width="200"
-        height="200"
-      />
+      <Link
+        href={`/products/${slug}`}
+        passHref
+        className={`${styles.productLink}`}
+      >
+        <Image
+          src={images?.[0]?.data}
+          className={`card-img-top`}
+          alt={name}
+          width="200"
+          height="200"
+        />
+      </Link>
       <div className={`card-body w-100 min-w-0 px-0`}>
         <p className={`card-text text-muted mb-2`}>{brand}</p>
         <h3 className={`card-title pb-1 mb-2 fs-5`}>

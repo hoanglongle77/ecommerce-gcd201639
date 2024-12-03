@@ -8,6 +8,8 @@ import { brandList } from "@/Static-Data/brands";
 import { getRandomProducts } from "@/actions/data";
 import Newsletter from "@/components/Home-Page/Newsletter/Newsletter";
 import { featuresList } from "@/Static-Data/features";
+import ButtonClear from "@/components/ButtonClear";
+
 const page = async () => {
   const trending = await getRandomProducts();
   return (

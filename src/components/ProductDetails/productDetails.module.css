@@ -1,0 +1,18 @@
+.albumContainer {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.thumbnailBtn img {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.thumbnailBtn.active img,
+.thumbnailBtn img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}

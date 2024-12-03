@@ -3,6 +3,7 @@ import { removeFromWishList } from "@/actions/actions";
 import React, { useTransition } from "react";
 import { Delete } from "@mui/icons-material";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 const Wishlist = ({ wishList }) => {
   const [isPending, startTransition] = useTransition();
@@ -41,7 +42,12 @@ const Wishlist = ({ wishList }) => {
               <td>{product.brand}</td>
               <td>${product.price}</td>
               <td className={`d-flex`}>
-                <button className="btn btn-primary btn-sm">View</button>
+                <Link
+                  className="btn btn-primary btn-sm"
+                  href={`/products/${product.slug}`}
+                >
+                  Details
+                </Link>
                 <form onSubmit={handleDelete}>
                   <input type="hidden" name="id" value={product._id} />
                   <button

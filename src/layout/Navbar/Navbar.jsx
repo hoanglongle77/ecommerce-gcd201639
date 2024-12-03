@@ -18,7 +18,7 @@ const Navbar = ({ data }) => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <a className="navbar-brand fw-bold" href="#">
-          ShopX
+          PIXELPORT
         </a>
         <button
           className="navbar-toggler"
