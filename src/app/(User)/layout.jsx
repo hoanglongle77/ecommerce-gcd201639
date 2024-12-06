@@ -4,7 +4,7 @@ import { getUser } from "@/libs/dal";
 import React from "react";
 import { Toaster } from "react-hot-toast";
 
-const UserLayout = async ({ children }) => {
+const StoreLayout = async ({ children }) => {
   let user = null;
   try {
     user = await getUser();
@@ -24,4 +24,4 @@ const UserLayout = async ({ children }) => {
   );
 };
 
-export default UserLayout;
+export default StoreLayout;

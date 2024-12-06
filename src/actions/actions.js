@@ -91,3 +91,24 @@ export const removeFromWishList = async (formData) => {
     };
   }
 };
+
+export const getMyOrders = async (id) => {
+  try {
+    const response = await store.get(`/orders/user/${id}`);
+    return response.data;
+  } catch (error) {
+    return {
+      success: false,
+      message: `Failed to get orders: ${error.message}`,
+    };
+  }
+};
+
+export const getOrderById = async (id) => {
+  try {
+    const response = await store.get(`/orders/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

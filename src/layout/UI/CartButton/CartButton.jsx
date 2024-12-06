@@ -6,8 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { ShoppingCart, ShoppingCartRounded } from "@mui/icons-material";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
+import getStripe from "@/libs/getStripe";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
-function CartButton() {
+function CartButton({ user }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -29,14 +32,15 @@ function CartButton() {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className={`p-4`}>
-          <CartBody />
+          <CartBody user={user} />
         </Offcanvas.Body>
       </Offcanvas>
     </div>
   );
 }
 
-const CartBody = () => {
+const CartBody = ({ user }) => {
+  const router = useRouter();
   const { cartItems, removeFromCart, updateQuantity, getTotalPrice } =
     useShoppingCart();
   const [totalPrice, setTotalPrice] = useState(getTotalPrice());
@@ -48,6 +52,28 @@ const CartBody = () => {
   const handleQuantityChange = (productId, quantity) => {
     updateQuantity(productId, quantity);
     setTotalPrice(getTotalPrice());
+  };
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const payload = {
+      cartItems: cartItems,
+      userId: user?._id,
+      userEmail: user?.email,
+    };
+
+    const response = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    if (response.statusCode === 500) return;
+    const data = await response.json();
+    toast.loading(`Loading ${JSON.stringify(data)}`);
+    stripe.redirectToCheckout({ sessionId: data.id });
   };
 
   return (
@@ -103,15 +129,21 @@ const CartBody = () => {
           <span className={`h6 mb-0`}>${totalPrice}</span>
         </div>
         <div className={`d-flex w-100 gap-3`}>
-          <Link href="/cart" className={`btn btn-lg btn-secondary w-100`}>
+          <Link href="/cart" className={`btn btn-md btn-secondary w-100`}>
             View Cart
           </Link>
-          <Link
-            className={`btn btn-lg btn-primary w-100`}
-            href="/cart/checkout"
-          >
-            Checkout
-          </Link>
+          {user ? (
+            <button
+              className={`btn btn-md btn-primary w-100`}
+              onClick={handleCheckout}
+            >
+              Checkout
+            </button>
+          ) : (
+            <Link href="/login" className={`btn btn-md btn-primary w-100`}>
+              Login to Checkout
+            </Link>
+          )}
         </div>
       </div>
     </>

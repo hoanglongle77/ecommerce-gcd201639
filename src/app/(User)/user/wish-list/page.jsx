@@ -17,7 +17,6 @@ const page = async () => {
   try {
     user = await getUser();
   } catch (error) {
-    console.error("Error fetching user:", error.message || error);
     user = null;
   }
 

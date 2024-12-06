@@ -10,11 +10,11 @@ export const verifySession = cache(async () => {
   const cookie = (await cookies()).get("session")?.value;
   const session = await decrypt(cookie);
 
-  if (!session.userId) {
+  if (!session?.userId) {
     redirect("/login");
   }
 
-  return { isAuth: true, userId: session.userId };
+  return { isAuth: true, userId: session?.userId };
 });
 
 export const getUser = cache(async () => {
@@ -22,17 +22,15 @@ export const getUser = cache(async () => {
   if (!session) return null;
 
   try {
-    const { data } = await store.get(`/users/${session.userId}`);
+    const { data } = await store.get(`/users/${session?.userId}`);
 
     if (!data || data.length === 0) {
-      console.log("User data not found");
       return null;
     }
 
     const user = data;
     return user;
   } catch (error) {
-    console.log("Failed to fetch user");
     return null;
   }
 });

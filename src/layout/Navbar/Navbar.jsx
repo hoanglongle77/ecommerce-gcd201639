@@ -49,7 +49,7 @@ const Navbar = ({ data }) => {
           </ul>
 
           <div className="d-flex flex-lg-row align-items-center">
-            <CartButton />
+            <CartButton user={data} />
 
             {data ? (
               <UserProfile user={data} />

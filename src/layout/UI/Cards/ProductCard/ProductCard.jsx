@@ -20,7 +20,7 @@ const ProductCard = ({ data }) => {
   };
 
   return (
-    <div className={`card ${styles.productCard}`}>
+    <div className={`card ${styles.productCard} mb-3`}>
       <Link
         href={`/products/${slug}`}
         passHref
